@@ -43,8 +43,11 @@ MainWindow::MainWindow(QWidget *parent)
         }
 
 
-        srand(time(NULL));
+        srand(time(0));
+        rand();
         randomWordNumber = rand() % 2315;
+        qDebug() << randomWordNumber;
+        //qDebug() << RAND_MAX;
         std::string s = wordlist[randomWordNumber];
         for(int i = 0;i<5;i++)
         randomWord.push_back(toupper(s.at(i)));
@@ -80,14 +83,14 @@ void MainWindow::paintEvent(QPaintEvent *event)
                 path.addRoundedRect(QRectF(10+i*110,10+j*110,100,100), 10, 10);
                 if(colorGrid[i][j] == 'Y'){
                     painter.fillPath(path,QBrush (QColor("yellow")));
-                    qDebug()<<"yellow";
+                    //qDebug()<<"yellow";
                 }
                 if(colorGrid[i][j] == 'G'){
-                    qDebug() << "green";
+                    //qDebug() << "green";
                     painter.fillPath(path,QBrush (QColor("green")));
                 }
                 if(colorGrid[i][j] == 'W'){
-                    qDebug() << "white";
+                    //qDebug() << "white";
                     painter.fillPath(path,QBrush (QColor("white")));
                 }
 
